@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "name": "dsh-plugins",
+  "maintainer": "Wanbinyu",
+  "official": false,
+  "projects": [
+    {
+      "name": "dsh-billing",
+      "url": "https://github.com/Wanbinyu/dsh-billing",
+      "type": "host-ui-plugin",
+      "description": "Per-model cost accounting, session quota progress, and a composer cost strip.",
+      "dshCompatibility": "0.1.0-rc.x",
+      "packageVersion": "0.2.0"
+    },
+    {
+      "name": "dsh-plugin-git-inspect",
+      "url": "https://github.com/Wanbinyu/dsh-plugin-git-inspect",
+      "type": "host-plugin",
+      "description": "Read-only Git status, diff, and log tools for DeepSeek Harness agents.",
+      "dshCompatibility": "0.1.0-rc.x",
+      "nodeCompatibility": ">=22.19.0"
+    },
+    {
+      "name": "dsh-launcher",
+      "url": "https://github.com/Wanbinyu/dsh-launcher",
+      "type": "windows-cli",
+      "description": "Short dsh and deepseek commands for starting the Harness Web profile.",
+      "platform": "windows"
+    }
+  ]
+}
