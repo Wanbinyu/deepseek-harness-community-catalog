@@ -13,6 +13,15 @@
       "packageVersion": "0.2.0"
     },
     {
+      "name": "dsh-mcp-lens",
+      "url": "https://github.com/labmimors/dsh-mcp-lens",
+      "type": "host-plugin",
+      "description": "Shrinks large MCP catalogs to two model-facing tools for lower standing schema bytes and input-heavy request cost.",
+      "dshCompatibility": "0.1.0-rc.6",
+      "packageVersion": "0.1.0-rc.6",
+      "nodeCompatibility": "^22.19.0 || >=24.0.0"
+    },
+    {
       "name": "dsh-plugin-git-inspect",
       "url": "https://github.com/Wanbinyu/dsh-plugin-git-inspect",
       "type": "host-plugin",
