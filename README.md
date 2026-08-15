@@ -9,7 +9,7 @@ This is an independent catalog maintained by [Wanbinyu](https://github.com/Wanbi
 | Project | Type | What it provides | Install / use |
 | --- | --- | --- | --- |
 | [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | Host + UI plugin | Per-model cost accounting, session quota progress, currency-aware pricing, and an optional composer cost strip. | Clone the repository and install `packages/dsh-billing` and `packages/dsh-client-ui-billing` into the profile. |
-| [dsh-mcp-lens](https://github.com/labmimors/dsh-mcp-lens) | Host plugin | Shrinks large MCP catalogs to two model-facing tools, reducing standing schema bytes and input-heavy request cost for long-tail tool sets. | `dsh plugin --profile web add https://github.com/labmimors/dsh-mcp-lens/releases/download/v0.1.0-rc.6/dsh-mcp-lens-0.1.0-rc.6.tgz` |
+| [dsh-mcp-lens](https://github.com/labmimors/dsh-mcp-lens) | Host plugin | Keeps large MCP catalogs behind two model-facing tools: search for exact schemas, then call an explicit server/tool pair. | `dsh plugin --profile web add https://github.com/labmimors/dsh-mcp-lens/releases/download/v0.1.0-rc.9/dsh-mcp-lens-0.1.0-rc.9.tgz` |
 | [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | Host plugin | Read-only `git_status`, `git_diff`, and `git_log` tools for agent workflows. | `npm install github:Wanbinyu/dsh-plugin-git-inspect` |
 | [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows CLI wrapper | Short `dsh` and `deepseek` commands that start the Harness Web profile and open the browser. | Clone the repository and run `install.ps1`. |
 
@@ -18,7 +18,7 @@ This is an independent catalog maintained by [Wanbinyu](https://github.com/Wanbi
 | Project | Current target |
 | --- | --- |
 | `dsh-billing` | DeepSeek Harness `0.1.0-rc.x`; built package version `0.2.0` |
-| `dsh-mcp-lens` | DeepSeek Harness `0.1.0-rc.6`; release `v0.1.0-rc.6`; Node.js `^22.19.0` or `>=24.0.0` |
+| `dsh-mcp-lens` | DeepSeek Harness `0.1.0-rc.6`; release `v0.1.0-rc.9`; Node.js `^22.19.0` or `>=24.0.0` |
 | `dsh-plugin-git-inspect` | DeepSeek Harness `0.1.0-rc.x`; Node.js `>=22.19.0` |
 | `dsh-launcher` | Windows PowerShell 5.1+; Node.js/npm or a Harness source checkout |
 

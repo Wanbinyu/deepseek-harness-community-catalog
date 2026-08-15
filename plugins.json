@@ -16,9 +16,9 @@
       "name": "dsh-mcp-lens",
       "url": "https://github.com/labmimors/dsh-mcp-lens",
       "type": "host-plugin",
-      "description": "Shrinks large MCP catalogs to two model-facing tools for lower standing schema bytes and input-heavy request cost.",
+      "description": "Keeps large MCP catalogs behind two model-facing tools: search for exact schemas, then call an explicit server/tool pair.",
       "dshCompatibility": "0.1.0-rc.6",
-      "packageVersion": "0.1.0-rc.6",
+      "packageVersion": "0.1.0-rc.9",
       "nodeCompatibility": "^22.19.0 || >=24.0.0"
     },
     {
