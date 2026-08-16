@@ -1,31 +1,51 @@
 {
   "schemaVersion": 1,
-  "name": "dsh-plugins",
+  "name": "deepseek-harness-community-catalog",
   "maintainer": "Wanbinyu",
   "official": false,
+  "verification": {
+    "bundleRequiredFor": "dsh plugin --profile <name> add <package>",
+    "bundleManifest": "package.json:dsh.bundle.patch",
+    "patchFile": "cordis.patch.yml",
+    "manualCompositionAllowed": true
+  },
   "projects": [
     {
       "name": "dsh-billing",
       "url": "https://github.com/Wanbinyu/dsh-billing",
-      "type": "host-ui-plugin",
+      "category": "plugin",
+      "type": "host-ui-bundle",
       "description": "Per-model cost accounting, session quota progress, and a composer cost strip.",
       "dshCompatibility": "0.1.0-rc.x",
-      "packageVersion": "0.2.0"
+      "packageVersion": "0.3.0",
+      "bundlePackage": "dsh-billing-community-bundle",
+      "bundleManifest": "package.json:dsh.bundle.patch",
+      "patchFile": "cordis.patch.yml",
+      "install": "dsh plugin --profile web add github:Wanbinyu/dsh-billing"
     },
     {
       "name": "dsh-plugin-git-inspect",
       "url": "https://github.com/Wanbinyu/dsh-plugin-git-inspect",
-      "type": "host-plugin",
+      "category": "plugin",
+      "type": "host-bundle",
       "description": "Read-only Git status, diff, and log tools for DeepSeek Harness agents.",
       "dshCompatibility": "0.1.0-rc.x",
-      "nodeCompatibility": ">=22.19.0"
+      "nodeCompatibility": ">=22.19.0",
+      "packageVersion": "0.1.0",
+      "bundleManifest": "package.json:dsh.bundle.patch",
+      "patchFile": "cordis.patch.yml",
+      "install": "dsh plugin --profile web add github:Wanbinyu/dsh-plugin-git-inspect"
     },
     {
       "name": "dsh-launcher",
       "url": "https://github.com/Wanbinyu/dsh-launcher",
+      "category": "tool",
       "type": "windows-cli",
       "description": "Short dsh and deepseek commands for starting the Harness Web profile.",
-      "platform": "windows"
+      "platform": "windows",
+      "install": "powershell -ExecutionPolicy Bypass -File .\\install.ps1",
+      "bundleManifest": null,
+      "patchFile": null
     }
   ]
 }
