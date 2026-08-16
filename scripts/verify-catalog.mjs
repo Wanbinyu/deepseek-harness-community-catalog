@@ -1,0 +1,114 @@
+import { readFile } from 'node:fs/promises'
+import { basename, dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const catalogPath = resolve(root, 'plugins.json')
+const catalog = JSON.parse(await readFile(catalogPath, 'utf8'))
+const failures = []
+
+function fail(message) {
+  failures.push(message)
+}
+
+function requiredString(value, path) {
+  if (typeof value !== 'string' || value.trim() === '') fail(`${path} must be a non-empty string`)
+}
+
+async function fetchJson(url) {
+  const response = await fetch(url, {
+    headers: { accept: 'application/vnd.github+json', 'user-agent': 'deepseek-harness-community-catalog' },
+  })
+  if (!response.ok) throw new Error(`${response.status} ${response.statusText}`)
+  return response.json()
+}
+
+async function fetchText(url) {
+  const response = await fetch(url, {
+    headers: { accept: 'text/plain', 'user-agent': 'deepseek-harness-community-catalog' },
+  })
+  if (!response.ok) throw new Error(`${response.status} ${response.statusText}`)
+  return response.text()
+}
+
+async function checkUrl(url) {
+  const response = await fetch(url, {
+    method: 'HEAD',
+    redirect: 'follow',
+    headers: { 'user-agent': 'deepseek-harness-community-catalog' },
+  })
+  return response.ok
+}
+
+if (catalog.schemaVersion !== 2) fail(`schemaVersion must be 2, got ${String(catalog.schemaVersion)}`)
+if (!Array.isArray(catalog.projects) || catalog.projects.length === 0) fail('projects must be a non-empty array')
+
+for (const [index, project] of (catalog.projects ?? []).entries()) {
+  const prefix = `projects[${index}]`
+  requiredString(project.name, `${prefix}.name`)
+  requiredString(project.url, `${prefix}.url`)
+  requiredString(project.category, `${prefix}.category`)
+  requiredString(project.latestVersion, `${prefix}.latestVersion`)
+  requiredString(project.lastVerified, `${prefix}.lastVerified`)
+  requiredString(project.verificationStatus, `${prefix}.verificationStatus`)
+
+  let repository
+  try {
+    const match = new URL(project.url).pathname.match(/^\/([^/]+)\/([^/]+?)(?:\.git)?$/)
+    if (match === null) throw new Error('repository URL must look like https://github.com/owner/repository')
+    const [, owner, repo] = match
+    repository = await fetchJson(`https://api.github.com/repos/${owner}/${repo}`)
+    const ref = repository.default_branch
+    const rawBase = `https://raw.githubusercontent.com/${owner}/${repo}/${ref}`
+
+    if (project.category === 'plugin') {
+      if (project.bundleManifest !== 'package.json:dsh.bundle.patch') {
+        fail(`${project.name}: bundleManifest must be package.json:dsh.bundle.patch`)
+      }
+      if (project.patchFile !== 'cordis.patch.yml') {
+        fail(`${project.name}: patchFile must be cordis.patch.yml`)
+      }
+      const packageText = await fetchText(`${rawBase}/package.json`)
+      const packageJson = JSON.parse(packageText)
+      if (packageJson.version !== project.latestVersion) {
+        fail(`${project.name}: catalog version ${project.latestVersion} != package version ${packageJson.version}`)
+      }
+      if (packageJson.dsh?.bundle?.patch !== './cordis.patch.yml') {
+        fail(`${project.name}: package.json does not declare ./cordis.patch.yml`)
+      }
+      const patchText = await fetchText(`${rawBase}/cordis.patch.yml`)
+      if (!patchText.includes('insert:')) fail(`${project.name}: cordis.patch.yml has no insert section`)
+      const readme = await fetchText(`${rawBase}/README.md`)
+      if (!/dsh plugin .* add /i.test(readme)) fail(`${project.name}: README.md has no dsh plugin install command`)
+      if (!/0\.1\.0-rc/i.test(readme)) fail(`${project.name}: README.md has no Harness compatibility statement`)
+    } else if (project.category === 'tool') {
+      requiredString(project.releaseUrl, `${prefix}.releaseUrl`)
+      requiredString(project.installerUrl, `${prefix}.installerUrl`)
+      requiredString(project.portableUrl, `${prefix}.portableUrl`)
+      const release = await fetchJson(`https://api.github.com/repos/${owner}/${repo}/releases/latest`)
+      if (release.tag_name !== `v${project.latestVersion}`) {
+        fail(`${project.name}: catalog version ${project.latestVersion} != latest release ${release.tag_name}`)
+      }
+      if (!release.html_url || project.releaseUrl !== release.html_url) {
+        fail(`${project.name}: releaseUrl does not point to the latest release`)
+      }
+      const assetNames = new Set((release.assets ?? []).map(asset => asset.name))
+      if (!assetNames.has(basename(new URL(project.installerUrl).pathname))) fail(`${project.name}: installer asset is missing from latest release`)
+      if (!assetNames.has(basename(new URL(project.portableUrl).pathname))) fail(`${project.name}: portable asset is missing from latest release`)
+      if (!(await checkUrl(project.installerUrl))) fail(`${project.name}: installerUrl is not reachable`)
+      if (!(await checkUrl(project.portableUrl))) fail(`${project.name}: portableUrl is not reachable`)
+    } else {
+      fail(`${project.name}: unsupported category ${project.category}`)
+    }
+  } catch (error) {
+    fail(`${project.name}: ${error instanceof Error ? error.message : String(error)}`)
+  }
+}
+
+if (failures.length > 0) {
+  console.error(`Catalog verification failed (${failures.length} issue${failures.length === 1 ? '' : 's'}):`)
+  for (const failure of failures) console.error(`- ${failure}`)
+  process.exitCode = 1
+} else {
+  console.log(`Catalog verification passed: ${catalog.projects.length} project(s)`)
+}

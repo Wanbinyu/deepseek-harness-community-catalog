@@ -14,24 +14,26 @@
 | 项目 | 功能 | 兼容性 | 安装 |
 | --- | --- | --- | --- |
 | [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | 按 provider/model 统计费用、会话额度和 Web 费用条。 | Harness `0.1.0-rc.x` | `dsh plugin --profile web add github:Wanbinyu/dsh-billing` |
-| [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | 提供只读的 `git_status`、`git_diff` 和 `git_log` 工具。 | Harness `0.1.0-rc.x`；Node.js `>=22.19.0` | `dsh plugin --profile web add github:Wanbinyu/dsh-plugin-git-inspect` |
+| [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | 提供只读的 Git 状态、diff、摘要、提交、历史和 refs 工具。 | Harness `0.1.0-rc.x`；Node.js `>=22.19.0` | `dsh plugin --profile web add github:Wanbinyu/dsh-plugin-git-inspect` |
 
 ## 配套工具
 
 | 项目 | 类型 | 功能 | 使用 |
 | --- | --- | --- | --- |
-| [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows CLI 工具 | 用 `dsh` 或 `deepseek` 快捷启动 Harness Web profile 并打开浏览器。 | 克隆仓库后运行 `install.ps1`。 |
+| [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows CLI 工具 | 用 `dsh` 或 `deepseek` 快捷启动 Harness Web profile 并打开浏览器。 | 下载并运行 [`dsh-launcher-setup.exe`](https://github.com/Wanbinyu/dsh-launcher/releases/download/v0.2.0/dsh-launcher-setup.exe)。 |
 
 启动器不是 Cordis 插件，也不需要 `cordis.yml` 或 `dsh.bundle`。把它单列可以避免将“能扩展 Harness 的插件”和“帮助启动 Harness 的工具”混为一谈。
 
 ## 收录与核验标准
 
-目录中的 `plugins.json` 提供机器可读数据。对于可声明为 bundle 的项目，至少核对以下内容：
+目录中的 `plugins.json` 提供机器可读数据。可以运行 `npm run verify` 自动检查公开仓库、版本、bundle 清单、patch 文件、README 安装说明和 launcher Release 资产。对于可声明为 bundle 的项目，至少核对以下内容：
 
 - `package.json` 包含 `dsh.bundle.patch`，且指向仓库内的 patch 文件。
 - patch 文件能插入仓库实际提供的插件包，并写明所需配置。
 - README 写明 Harness 兼容版本、运行时要求、安装方法和项目边界。
 - 安装路径可复现，许可证和 Issue 入口清晰。
+
+`lastVerified`、`latestVersion`、`releaseUrl` 和 `verificationStatus` 用于让客户端判断目录信息的新鲜度；它们不是 DeepSeek 官方认证标记。
 
 普通插件也可以由宿主项目安装为依赖，再由用户自己的 `cordis.patch.yml` 手动组合；这种项目应明确标记为手动组合，而不是声称支持 `dsh plugin ... add`。
 

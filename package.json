@@ -1,0 +1,15 @@
+{
+  "name": "deepseek-harness-community-catalog",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Machine-readable community catalog and verification checks for DeepSeek Harness projects",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "verify": "node scripts/verify-catalog.mjs",
+    "verify:catalog": "node scripts/verify-catalog.mjs"
+  }
+}
