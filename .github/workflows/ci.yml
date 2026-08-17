@@ -1,4 +1,4 @@
-name: Verify Catalog
+name: Verify Toolbox
 
 on:
   push:

@@ -17,7 +17,7 @@ function requiredString(value, path) {
 
 async function fetchJson(url) {
   const response = await fetch(url, {
-    headers: { accept: 'application/vnd.github+json', 'user-agent': 'deepseek-harness-community-catalog' },
+    headers: { accept: 'application/vnd.github+json', 'user-agent': 'wanbinyu-harness-toolbox' },
   })
   if (!response.ok) throw new Error(`${response.status} ${response.statusText}`)
   return response.json()
@@ -25,7 +25,7 @@ async function fetchJson(url) {
 
 async function fetchText(url) {
   const response = await fetch(url, {
-    headers: { accept: 'text/plain', 'user-agent': 'deepseek-harness-community-catalog' },
+    headers: { accept: 'text/plain', 'user-agent': 'wanbinyu-harness-toolbox' },
   })
   if (!response.ok) throw new Error(`${response.status} ${response.statusText}`)
   return response.text()
@@ -35,7 +35,7 @@ async function checkUrl(url) {
   const response = await fetch(url, {
     method: 'HEAD',
     redirect: 'follow',
-    headers: { 'user-agent': 'deepseek-harness-community-catalog' },
+    headers: { 'user-agent': 'wanbinyu-harness-toolbox' },
   })
   return response.ok
 }

@@ -1,11 +1,11 @@
-# DeepSeek Harness Community Catalog
+# Wanbinyu Harness Toolbox
 
 [简体中文](README.md) | [English](README.en.md)
 
-An independent community catalog of plugins and companion tools for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`).
+An independent third-party index of plugins and companion tools for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`).
 
 > [!IMPORTANT]
-> This catalog is maintained independently by [Wanbinyu](https://github.com/Wanbinyu). It is not an official DeepSeek distribution and does not provide official support or security guarantees. Refer to each project's README, release history, and license.
+> This toolbox is maintained independently by [Wanbinyu](https://github.com/Wanbinyu). It is not an official DeepSeek project and is not supported, certified, or security-reviewed by DeepSeek. Refer to each project's README, release history, and license.
 
 ## Plugin Bundles
 

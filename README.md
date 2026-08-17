@@ -1,11 +1,11 @@
-# DeepSeek Harness 社区目录
+# Wanbinyu Harness 工具箱
 
 [简体中文](README.md) | [English](README.en.md)
 
-[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）的独立社区插件与配套工具目录。
+[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）的独立第三方插件与配套工具索引。
 
 > [!IMPORTANT]
-> 本目录由 [Wanbinyu](https://github.com/Wanbinyu) 独立维护，不代表 DeepSeek 官方，也不提供官方支持或安全保证。收录项目请以各自仓库的 README、版本和许可证为准。
+> 本工具箱由 [Wanbinyu](https://github.com/Wanbinyu) 独立维护，不是 DeepSeek 官方项目，也不代表 DeepSeek 官方提供支持、认证或安全保证。收录项目请以各自仓库的 README、版本和许可证为准。
 
 ## 插件 Bundle
 
