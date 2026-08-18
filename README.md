@@ -20,7 +20,7 @@
 
 | 项目 | 类型 | 功能 | 使用 |
 | --- | --- | --- | --- |
-| [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows CLI 工具 | 用 `dsh` 或 `deepseek` 快捷启动 Harness Web profile 并打开浏览器。 | 下载并运行 [`dsh-launcher-setup.exe`](https://github.com/Wanbinyu/dsh-launcher/releases/download/v0.2.0/dsh-launcher-setup.exe)。 |
+| [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows CLI 工具 | 用 `dsh` 或 `deepseek` 快捷启动 Harness Web profile 并打开浏览器。 | 下载并运行 [`dsh-launcher-setup.exe`](https://github.com/Wanbinyu/dsh-launcher/releases/download/v0.3.4/dsh-launcher-setup.exe)。 |
 
 启动器不是 Cordis 插件，也不需要 `cordis.yml` 或 `dsh.bundle`。把它单列可以避免将“能扩展 Harness 的插件”和“帮助启动 Harness 的工具”混为一谈。
 

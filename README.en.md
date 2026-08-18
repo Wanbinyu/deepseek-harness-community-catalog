@@ -20,7 +20,7 @@ These projects provide `dsh.bundle.patch` in `package.json` and ship a `cordis.p
 
 | Project | Type | What it provides | Use |
 | --- | --- | --- | --- |
-| [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows CLI tool | Short `dsh` and `deepseek` commands for starting the Harness Web profile and opening the browser. | Download and run [`dsh-launcher-setup.exe`](https://github.com/Wanbinyu/dsh-launcher/releases/download/v0.2.0/dsh-launcher-setup.exe). |
+| [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows CLI tool | Short `dsh` and `deepseek` commands for starting the Harness Web profile and opening the browser. | Download and run [`dsh-launcher-setup.exe`](https://github.com/Wanbinyu/dsh-launcher/releases/download/v0.3.4/dsh-launcher-setup.exe). |
 
 The launcher is not a Cordis plugin and does not need `cordis.yml` or `dsh.bundle`. Keeping it separate avoids confusing Harness extensions with tools that help start Harness.
 

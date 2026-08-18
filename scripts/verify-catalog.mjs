@@ -62,6 +62,7 @@ for (const [index, project] of (catalog.projects ?? []).entries()) {
     const rawBase = `https://raw.githubusercontent.com/${owner}/${repo}/${ref}`
 
     if (project.category === 'plugin') {
+      requiredString(project.packageVersion, `${prefix}.packageVersion`)
       if (project.bundleManifest !== 'package.json:dsh.bundle.patch') {
         fail(`${project.name}: bundleManifest must be package.json:dsh.bundle.patch`)
       }
@@ -72,6 +73,17 @@ for (const [index, project] of (catalog.projects ?? []).entries()) {
       const packageJson = JSON.parse(packageText)
       if (packageJson.version !== project.latestVersion) {
         fail(`${project.name}: catalog version ${project.latestVersion} != package version ${packageJson.version}`)
+      }
+      if (project.bundlePackage !== undefined) {
+        if (packageJson.name !== project.bundlePackage) {
+          fail(`${project.name}: bundlePackage ${project.bundlePackage} != package name ${packageJson.name}`)
+        }
+        const pluginPackage = JSON.parse(await fetchText(`${rawBase}/packages/${project.name}/package.json`))
+        if (pluginPackage.version !== project.packageVersion) {
+          fail(`${project.name}: packageVersion ${project.packageVersion} != plugin package version ${pluginPackage.version}`)
+        }
+      } else if (packageJson.version !== project.packageVersion) {
+        fail(`${project.name}: packageVersion ${project.packageVersion} != package version ${packageJson.version}`)
       }
       if (packageJson.dsh?.bundle?.patch !== './cordis.patch.yml') {
         fail(`${project.name}: package.json does not declare ./cordis.patch.yml`)
