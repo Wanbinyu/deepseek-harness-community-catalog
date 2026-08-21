@@ -63,6 +63,8 @@ for (const [index, project] of (catalog.projects ?? []).entries()) {
 
     if (project.category === 'plugin') {
       requiredString(project.packageVersion, `${prefix}.packageVersion`)
+      requiredString(project.releaseUrl, `${prefix}.releaseUrl`)
+      requiredString(project.packageUrl, `${prefix}.packageUrl`)
       if (project.bundleManifest !== 'package.json:dsh.bundle.patch') {
         fail(`${project.name}: bundleManifest must be package.json:dsh.bundle.patch`)
       }
@@ -92,7 +94,19 @@ for (const [index, project] of (catalog.projects ?? []).entries()) {
       if (!patchText.includes('insert:')) fail(`${project.name}: cordis.patch.yml has no insert section`)
       const readme = await fetchText(`${rawBase}/README.md`)
       if (!/dsh plugin .* add /i.test(readme)) fail(`${project.name}: README.md has no dsh plugin install command`)
-      if (!/0\.1\.0-rc/i.test(readme)) fail(`${project.name}: README.md has no Harness compatibility statement`)
+      if (!/0\.1\.[01]-rc/i.test(readme)) fail(`${project.name}: README.md has no Harness compatibility statement`)
+      const release = await fetchJson(`https://api.github.com/repos/${owner}/${repo}/releases/latest`)
+      if (release.tag_name !== `v${project.latestVersion}`) {
+        fail(`${project.name}: catalog version ${project.latestVersion} != latest release ${release.tag_name}`)
+      }
+      if (!release.html_url || project.releaseUrl !== release.html_url) {
+        fail(`${project.name}: releaseUrl does not point to the latest release`)
+      }
+      const packageAsset = basename(new URL(project.packageUrl).pathname)
+      const assetNames = new Set((release.assets ?? []).map(asset => asset.name))
+      if (!assetNames.has(packageAsset)) fail(`${project.name}: package asset ${packageAsset} is missing from latest release`)
+      if (!project.install.includes(project.packageUrl)) fail(`${project.name}: install command is not pinned to packageUrl`)
+      if (!(await checkUrl(project.packageUrl))) fail(`${project.name}: packageUrl is not reachable`)
     } else if (project.category === 'tool') {
       requiredString(project.releaseUrl, `${prefix}.releaseUrl`)
       requiredString(project.installerUrl, `${prefix}.installerUrl`)

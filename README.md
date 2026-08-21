@@ -11,22 +11,28 @@
 
 下列项目提供 `package.json` 中的 `dsh.bundle.patch`，并附带 `cordis.patch.yml`，可以通过 Harness profile 的插件流程安装：
 
-| 项目 | 功能 | 兼容性 | 安装 |
+| 项目 | 当前版本 | 功能 | 兼容性 |
 | --- | --- | --- | --- |
-| [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | 按 provider/model 统计费用、会话额度和 Web 费用条。 | Harness `0.1.0-rc.x` | `dsh plugin --profile web add github:Wanbinyu/dsh-billing` |
-| [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | 提供只读的 Git 状态、diff、摘要、提交、历史和 refs 工具。 | Harness `0.1.0-rc.x`；Node.js `>=22.19.0` | `dsh plugin --profile web add github:Wanbinyu/dsh-plugin-git-inspect` |
+| [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | `0.6.2` | 按 provider/model 统计费用、会话额度和 Web 费用条。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` |
+| [dsh-error-lens](https://github.com/Wanbinyu/dsh-error-lens) | `0.1.1` | 显示只读、脱敏的供应商错误诊断和处理建议。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` |
+| [dsh-concurrency-meter](https://github.com/Wanbinyu/dsh-concurrency-meter) | `0.1.1` | 监控活动请求、峰值并发、执行结果和供应商分组。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` |
+| [dsh-provider-probe](https://github.com/Wanbinyu/dsh-provider-probe) | `0.3.1` | 手动检查供应商连通性、延迟、能力和常见故障。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` |
+| [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | `0.3.1` | 提供只读的 Git 状态、diff、摘要、提交、历史和 refs 工具。 | Harness `0.1.0-rc.5` 至 `rc.8`、`0.1.1-rc.1` |
+| [dsh-companion](https://github.com/Wanbinyu/dsh-companion) | `0.1.9` | 本地状态感知桌面伙伴，显示任务状态、动作和完成反馈。 | Harness `0.1.0-rc.6` 至 `rc.8`；当前固定以 `rc.8` 验证 |
+
+每个插件的精确 Release 安装命令记录在 [`plugins.json`](plugins.json) 中，避免默认分支更新后安装结果发生变化。
 
 ## 配套工具
 
 | 项目 | 类型 | 功能 | 使用 |
 | --- | --- | --- | --- |
-| [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows CLI 工具 | 用 `dsh` 或 `deepseek` 快捷启动 Harness Web profile 并打开浏览器。 | 下载并运行 [`dsh-launcher-setup.exe`](https://github.com/Wanbinyu/dsh-launcher/releases/download/v0.3.4/dsh-launcher-setup.exe)。 |
+| [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows 后台启动器 | 双击或用 `dsh`、`deepseek` 启动 Harness Web，提供托盘控制并在服务就绪后打开浏览器。 | 下载并运行 [`dsh-launcher-setup.exe`](https://github.com/Wanbinyu/dsh-launcher/releases/download/v0.3.5/dsh-launcher-setup.exe)。 |
 
 启动器不是 Cordis 插件，也不需要 `cordis.yml` 或 `dsh.bundle`。把它单列可以避免将“能扩展 Harness 的插件”和“帮助启动 Harness 的工具”混为一谈。
 
 ## 收录与核验标准
 
-目录中的 `plugins.json` 提供机器可读数据。可以运行 `npm run verify` 自动检查公开仓库、版本、bundle 清单、patch 文件、README 安装说明和 launcher Release 资产。对于可声明为 bundle 的项目，至少核对以下内容：
+目录中的 `plugins.json` 提供机器可读数据。可以运行 `npm run verify` 自动检查公开仓库、包版本、最新 Release、安装包、bundle 清单、patch 文件、README 安装说明和 launcher Release 资产。对于可声明为 bundle 的项目，至少核对以下内容：
 
 - `package.json` 包含 `dsh.bundle.patch`，且指向仓库内的 patch 文件。
 - patch 文件能插入仓库实际提供的插件包，并写明所需配置。

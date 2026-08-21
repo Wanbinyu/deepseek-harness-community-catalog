@@ -11,22 +11,28 @@ An independent third-party index of plugins and companion tools for [DeepSeek Ha
 
 These projects provide `dsh.bundle.patch` in `package.json` and ship a `cordis.patch.yml`, so they can be installed through a Harness profile's plugin flow:
 
-| Project | What it provides | Compatibility | Install |
+| Project | Current version | What it provides | Compatibility |
 | --- | --- | --- | --- |
-| [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | Per-provider/model cost accounting, session quota, and a Web cost strip. | Harness `0.1.0-rc.x` | `dsh plugin --profile web add github:Wanbinyu/dsh-billing` |
-| [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | Read-only Git status, diff, summary, commit, history, and refs tools. | Harness `0.1.0-rc.x`; Node.js `>=22.19.0` | `dsh plugin --profile web add github:Wanbinyu/dsh-plugin-git-inspect` |
+| [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | `0.6.2` | Per-provider/model cost accounting, session quota, and a Web cost strip. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` |
+| [dsh-error-lens](https://github.com/Wanbinyu/dsh-error-lens) | `0.1.1` | Read-only, redacted provider error diagnostics and recovery guidance. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` |
+| [dsh-concurrency-meter](https://github.com/Wanbinyu/dsh-concurrency-meter) | `0.1.1` | Active request, peak concurrency, result, and provider-group monitoring. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` |
+| [dsh-provider-probe](https://github.com/Wanbinyu/dsh-provider-probe) | `0.3.1` | Explicit provider connectivity, latency, capability, and failure checks. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` |
+| [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | `0.3.1` | Read-only Git status, diff, summary, commit, history, and refs tools. | Harness `0.1.0-rc.5` through `rc.8`, plus `0.1.1-rc.1` |
+| [dsh-companion](https://github.com/Wanbinyu/dsh-companion) | `0.1.9` | A local, state-aware desktop companion with task status, actions, and completion feedback. | Harness `0.1.0-rc.6` through `rc.8`; currently verified with pinned `rc.8` packages |
+
+Exact, version-pinned Release installation commands are stored in [`plugins.json`](plugins.json), so installs do not change when a default branch moves.
 
 ## Companion Tools
 
 | Project | Type | What it provides | Use |
 | --- | --- | --- | --- |
-| [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows CLI tool | Short `dsh` and `deepseek` commands for starting the Harness Web profile and opening the browser. | Download and run [`dsh-launcher-setup.exe`](https://github.com/Wanbinyu/dsh-launcher/releases/download/v0.3.4/dsh-launcher-setup.exe). |
+| [dsh-launcher](https://github.com/Wanbinyu/dsh-launcher) | Windows background launcher | Double-click or use `dsh` and `deepseek` to start Harness Web, control it from the tray, and open the browser after readiness. | Download and run [`dsh-launcher-setup.exe`](https://github.com/Wanbinyu/dsh-launcher/releases/download/v0.3.5/dsh-launcher-setup.exe). |
 
 The launcher is not a Cordis plugin and does not need `cordis.yml` or `dsh.bundle`. Keeping it separate avoids confusing Harness extensions with tools that help start Harness.
 
 ## Inclusion And Verification
 
-The machine-readable catalog is [`plugins.json`](plugins.json). Run `npm run verify` to check public repositories, versions, bundle manifests, patch files, README installation instructions, and launcher Release assets. For projects classified as bundles, the minimum checks are:
+The machine-readable catalog is [`plugins.json`](plugins.json). Run `npm run verify` to check public repositories, package versions, latest Releases, package assets, bundle manifests, patch files, README installation instructions, and launcher Release assets. For projects classified as bundles, the minimum checks are:
 
 - `package.json` contains `dsh.bundle.patch` and points to a patch file shipped in the repository.
 - The patch inserts a plugin package actually provided by the repository and documents its configuration.
