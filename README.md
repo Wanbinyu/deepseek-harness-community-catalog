@@ -14,6 +14,7 @@
 | 项目 | 功能 | 兼容性 | 安装 |
 | --- | --- | --- | --- |
 | [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | 按 provider/model 统计费用、会话额度和 Web 费用条。 | Harness `0.1.0-rc.x` | `dsh plugin --profile web add github:Wanbinyu/dsh-billing` |
+| [dsh-tool-squeeze](https://github.com/w2829562572-dev/dsh-tool-squeeze) | 对超大日志、JSON、HTML 和文本工具输出进行证据保留型压缩。 | Harness `0.1.0-rc.8`；Node.js `>=22.19.0` | `dsh plugin --profile web add github:w2829562572-dev/dsh-tool-squeeze` |
 | [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | 提供只读的 Git 状态、diff、摘要、提交、历史和 refs 工具。 | Harness `0.1.0-rc.x`；Node.js `>=22.19.0` | `dsh plugin --profile web add github:Wanbinyu/dsh-plugin-git-inspect` |
 
 ## 配套工具
