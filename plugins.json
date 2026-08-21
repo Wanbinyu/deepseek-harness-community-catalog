@@ -45,6 +45,23 @@
       "verificationStatus": "verified"
     },
     {
+      "name": "dsh-tool-squeeze",
+      "url": "https://github.com/w2829562572-dev/dsh-tool-squeeze",
+      "category": "plugin",
+      "type": "host-bundle",
+      "description": "Evidence-preserving compression for oversized log, JSON, HTML, and text tool output.",
+      "dshCompatibility": "0.1.0-rc.8",
+      "nodeCompatibility": ">=22.19.0",
+      "packageVersion": "0.1.0",
+      "bundleManifest": "package.json:dsh.bundle.patch",
+      "patchFile": "cordis.patch.yml",
+      "install": "dsh plugin --profile web add github:w2829562572-dev/dsh-tool-squeeze",
+      "latestVersion": "0.1.0",
+      "releaseUrl": "https://github.com/w2829562572-dev/dsh-tool-squeeze/releases/tag/v0.1.0",
+      "lastVerified": "2026-08-21",
+      "verificationStatus": "submitted"
+    },
+    {
       "name": "dsh-launcher",
       "url": "https://github.com/Wanbinyu/dsh-launcher",
       "category": "tool",

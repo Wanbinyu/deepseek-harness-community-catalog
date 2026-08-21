@@ -14,6 +14,7 @@ These projects provide `dsh.bundle.patch` in `package.json` and ship a `cordis.p
 | Project | What it provides | Compatibility | Install |
 | --- | --- | --- | --- |
 | [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | Per-provider/model cost accounting, session quota, and a Web cost strip. | Harness `0.1.0-rc.x` | `dsh plugin --profile web add github:Wanbinyu/dsh-billing` |
+| [dsh-tool-squeeze](https://github.com/w2829562572-dev/dsh-tool-squeeze) | Evidence-preserving compression for oversized log, JSON, HTML, and text tool output. | Harness `0.1.0-rc.8`; Node.js `>=22.19.0` | `dsh plugin --profile web add github:w2829562572-dev/dsh-tool-squeeze` |
 | [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | Read-only Git status, diff, summary, commit, history, and refs tools. | Harness `0.1.0-rc.x`; Node.js `>=22.19.0` | `dsh plugin --profile web add github:Wanbinyu/dsh-plugin-git-inspect` |
 
 ## Companion Tools
