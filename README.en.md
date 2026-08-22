@@ -13,12 +13,12 @@ These projects provide `dsh.bundle.patch` in `package.json` and ship a `cordis.p
 
 | Project | Current version | What it provides | Compatibility |
 | --- | --- | --- | --- |
-| [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | `0.6.2` | Per-provider/model cost accounting, session quota, and a Web cost strip. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` |
-| [dsh-error-lens](https://github.com/Wanbinyu/dsh-error-lens) | `0.1.1` | Read-only, redacted provider error diagnostics and recovery guidance. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` |
-| [dsh-concurrency-meter](https://github.com/Wanbinyu/dsh-concurrency-meter) | `0.1.1` | Active request, peak concurrency, result, and provider-group monitoring. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` |
-| [dsh-provider-probe](https://github.com/Wanbinyu/dsh-provider-probe) | `0.3.1` | Explicit provider connectivity, latency, capability, and failure checks. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` |
-| [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | `0.3.1` | Read-only Git status, diff, summary, commit, history, and refs tools. | Harness `0.1.0-rc.5` through `rc.8`, plus `0.1.1-rc.1` |
-| [dsh-companion](https://github.com/Wanbinyu/dsh-companion) | `0.1.9` | A local, state-aware desktop companion with task status, actions, and completion feedback. | Harness `0.1.0-rc.6` through `rc.8`; currently verified with pinned `rc.8` packages |
+| [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | `0.6.3` | Per-provider/model cost accounting, session quota, and a Web cost strip. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` through `rc.2` |
+| [dsh-error-lens](https://github.com/Wanbinyu/dsh-error-lens) | `0.1.2` | Read-only, redacted provider error diagnostics and recovery guidance. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` through `rc.2` |
+| [dsh-concurrency-meter](https://github.com/Wanbinyu/dsh-concurrency-meter) | `0.1.2` | Active request, peak concurrency, result, and provider-group monitoring. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` through `rc.2` |
+| [dsh-provider-probe](https://github.com/Wanbinyu/dsh-provider-probe) | `0.3.2` | Explicit provider connectivity, latency, capability, and failure checks. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` through `rc.2` |
+| [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | `0.3.2` | Read-only Git status, diff, summary, commit, history, and refs tools. | Harness `0.1.0-rc.5` through `rc.8`, plus `0.1.1-rc.1` through `rc.2` |
+| [dsh-companion](https://github.com/Wanbinyu/dsh-companion) | `0.1.10` | A local, state-aware desktop companion with task status, actions, and completion feedback. | Harness `0.1.0-rc.6` through `rc.8`, plus `0.1.1-rc.1` through `rc.2` |
 
 Exact, version-pinned Release installation commands are stored in [`plugins.json`](plugins.json), so installs do not change when a default branch moves.
 

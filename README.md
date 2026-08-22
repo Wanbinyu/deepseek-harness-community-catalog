@@ -13,12 +13,12 @@
 
 | 项目 | 当前版本 | 功能 | 兼容性 |
 | --- | --- | --- | --- |
-| [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | `0.6.2` | 按 provider/model 统计费用、会话额度和 Web 费用条。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` |
-| [dsh-error-lens](https://github.com/Wanbinyu/dsh-error-lens) | `0.1.1` | 显示只读、脱敏的供应商错误诊断和处理建议。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` |
-| [dsh-concurrency-meter](https://github.com/Wanbinyu/dsh-concurrency-meter) | `0.1.1` | 监控活动请求、峰值并发、执行结果和供应商分组。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` |
-| [dsh-provider-probe](https://github.com/Wanbinyu/dsh-provider-probe) | `0.3.1` | 手动检查供应商连通性、延迟、能力和常见故障。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` |
-| [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | `0.3.1` | 提供只读的 Git 状态、diff、摘要、提交、历史和 refs 工具。 | Harness `0.1.0-rc.5` 至 `rc.8`、`0.1.1-rc.1` |
-| [dsh-companion](https://github.com/Wanbinyu/dsh-companion) | `0.1.9` | 本地状态感知桌面伙伴，显示任务状态、动作和完成反馈。 | Harness `0.1.0-rc.6` 至 `rc.8`；当前固定以 `rc.8` 验证 |
+| [dsh-billing](https://github.com/Wanbinyu/dsh-billing) | `0.6.3` | 按 provider/model 统计费用、会话额度和 Web 费用条。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` 至 `rc.2` |
+| [dsh-error-lens](https://github.com/Wanbinyu/dsh-error-lens) | `0.1.2` | 显示只读、脱敏的供应商错误诊断和处理建议。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` 至 `rc.2` |
+| [dsh-concurrency-meter](https://github.com/Wanbinyu/dsh-concurrency-meter) | `0.1.2` | 监控活动请求、峰值并发、执行结果和供应商分组。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` 至 `rc.2` |
+| [dsh-provider-probe](https://github.com/Wanbinyu/dsh-provider-probe) | `0.3.2` | 手动检查供应商连通性、延迟、能力和常见故障。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` 至 `rc.2` |
+| [dsh-plugin-git-inspect](https://github.com/Wanbinyu/dsh-plugin-git-inspect) | `0.3.2` | 提供只读的 Git 状态、diff、摘要、提交、历史和 refs 工具。 | Harness `0.1.0-rc.5` 至 `rc.8`、`0.1.1-rc.1` 至 `rc.2` |
+| [dsh-companion](https://github.com/Wanbinyu/dsh-companion) | `0.1.10` | 本地状态感知桌面伙伴，显示任务状态、动作和完成反馈。 | Harness `0.1.0-rc.6` 至 `rc.8`、`0.1.1-rc.1` 至 `rc.2` |
 
 每个插件的精确 Release 安装命令记录在 [`plugins.json`](plugins.json) 中，避免默认分支更新后安装结果发生变化。
 
